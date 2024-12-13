@@ -74,7 +74,7 @@ if (isset($data['action']) && $data['action'] == 'logout') {
 // 注册功能
 if (isset($data['action']) && $data['action'] == 'register') {
     $username = $data['username'];
-    $password = password_hash($data['password'], PASSWORD_BCRYPT);
+    $password = $data['password'];
     $email = $data['email'];
 
     $stmt = $pdo->prepare("INSERT INTO users (username, password, email, created_at) VALUES (?, ?, ?, NOW())");
