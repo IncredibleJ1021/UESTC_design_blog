@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的博客主页</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+    <div class="navigation">
+        <ul>
+            <li><a href="home.html">主页</a></li>
+            <li><a href="edit.html">关于我</a></li>
+            <li><a href="index.html" id="logoutButton">退出登录</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <div class="profile">
+            <div id="img">
+                <!-- 用户头像 -->
+                <img src="./css/img/background.jpg" alt="" id="userAvatar">
+            </div>
+            <h1 id="userName"></h1>
+        </div>
+    </header>
+
+    <section id="newPost">
+        <h2>发布新博客</h2>
+        <form id="postForm">
+            <input type="hidden" name="action" value="publish">
+            <textarea id="postContent" placeholder="写下你的想法..."></textarea>
+            <button type="submit">发布文章</button>
+        </form>
+    </section>
+
+    <section id="posts">
+        <div id="posts">
+            <h2>我的博客文章</h2>
+            <div id="postList"></div>
+        </div>
+
+        <script>
+            async function fetchPosts() {
+                try {
+                    const response = await fetch('get_posts.php'); // 调用后端接口
+                    const data = await response.json();
+
+                    if (data.error) {
+                        document.getElementById('postList').innerText = data.error;
+                        return;
+                    }
+
+                    const postsContainer = document.getElementById('postList');
+                    postsContainer.innerHTML = ''; // 清空内容
+
+                    data.posts.forEach(post => {
+                        const postElement = document.createElement('div');
+                        postElement.className = 'post';
+                        postElement.innerHTML = `
+                            <p>${post.content}</p>
+                            <small>发布时间: ${post.created_at}</small>
+                        `;
+                        postsContainer.appendChild(postElement);
+                    });
+                } catch (error) {
+                    console.error('加载失败:', error);
+                    document.getElementById('postList').innerText = '加载失败，请重试';
+                }
+            }
+
+            fetchPosts();
+        </script>
+    </section>
+
+    <section id="newMessage">
+        <h2>发布留言</h2>
+        <form id="messageForm">
+            <input type="hidden" name="action" value="add_message">
+            <textarea id="messageContent" placeholder="写下你的留言..."></textarea>
+            <button type="submit">发布留言</button>
+        </form>
+    </section>
+    <section id="messages">
+        <h2>留言板</h2>
+        <div id="messageList"></div>
+    </section>
+    <script>
+        // 发布留言
+        // 发布留言
+        async function postMessage(content) {
+            try {
+                const userId = localStorage.getItem('user_id');
+                if (!userId) {
+                    alert('请先登录');
+                    return;
+                }
+
+                const response = await fetch('/message.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({
+                        action: 'add_message',
+                        user_id: userId,
+                        content: content,
+                    }),
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    alert('留言成功');
+                    loadMessages();
+                } else {
+                    alert(`留言失败: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('留言请求失败:', error);
+                alert('留言请求失败');
+            }
+        }
+
+        // 获取并显示所有留言
+        async function loadMessages() {
+            try {
+                const response = await fetch('/message.php', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams({ action: 'get_messages' }),
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    const messagesContainer = document.getElementById('messageList');
+                    messagesContainer.innerHTML = '';
+
+                    result.messages.forEach(message => {
+                        const messageElement = document.createElement('div');
+                        messageElement.className = 'message';
+                        messageElement.innerHTML = `
+                    <p><strong>${message.username}</strong>: ${message.content}</p>
+                    <small>${message.created_at}</small>
+                `;
+                        messagesContainer.appendChild(messageElement);
+                    });
+                } else {
+                    alert(`加载留言失败: ${result.message}`);
+                }
+            } catch (error) {
+                console.error('加载留言失败:', error);
+                alert('加载留言失败');
+            }
+        }
+
+        // 添加表单提交事件监听
+        document.getElementById('messageForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const content = document.getElementById('messageContent').value.trim();
+            if (content) {
+                await postMessage(content);
+                document.getElementById('messageContent').value = '';
+            } else {
+                alert('留言内容不能为空');
+            }
+        });
+
+        // 页面加载时获取留言
+        loadMessages();
+    </script>
+
+    <script src="./js/main.js"></script>
+    <script>
+        checkLogin();
+
+        async function checkLogin() {
+            const userId = localStorage.getItem("user_id");
+            if (!userId) {
+                alert("请先登录！");
+                window.location.replace("index.html");
+                return;
+            }
+
+            // 获取用户信息（包括头像和用户名）
+            try {
+                const response = await fetch(`/get_user_info.php?user_id=${userId}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    // 显示用户头像
+                    const userAvatar = document.getElementById("userAvatar");
+                    const userName = document.getElementById("userName");
+
+                    // 如果用户有头像，更新头像
+                    if (data.avatar) {
+                        userAvatar.src = `/uploads/${data.avatar}`;
+                    } else {
+                        // 如果没有头像，可以设置一个默认头像
+                        userAvatar.src = './css/img/one.jpg';  // 设置默认头像
+                    }
+
+                    // 设置用户名
+                    userName.textContent = data.username;
+                } else {
+                    alert('获取用户信息失败');
+                }
+            } catch (error) {
+                console.error('获取用户信息失败:', error);
+            }
+        }
+    </script>
+</body>
+
+</html>

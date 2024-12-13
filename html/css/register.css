@@ -1,0 +1,81 @@
+* {
+    margin:0;
+    padding: 0;
+    background: url(./img/one.jpg) no-repeat;
+    background-size:100% 100%;
+    background-attachment:fixed;
+}
+.container {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: whitesmoke;
+    width: 350px;
+    height: 420px;
+    padding: 30px;
+    position: absolute;
+    border-radius: 15px;
+    opacity: 70%;
+}
+h1 {
+    background: none;
+    text-align: center;
+    margin: 20px 0;
+    color: black;
+    /*text transform的话是中文就不需要哦*/
+    /*text-transform: uppercase;*/
+}
+
+form {
+    background: none;
+}
+
+label {
+    background: none;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+input {
+    background: none;
+    display: block;
+    width: 90%;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid black;
+    padding: 10px;
+}
+
+button {
+    display: block;
+    margin-top: 20px;
+    width: 95%;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 10px;
+    background: black;
+    border: none;
+    outline: none;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: lightseagreen;
+}
+
+form a {
+    font-weight: bold;
+    color: lightseagreen;
+    background: none;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+form a:hover {
+    color: rgb(13, 84, 81);
+}

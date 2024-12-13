@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>编辑个人信息</title>
+    <link rel="stylesheet" href="./css/edit.css">
+</head>
+
+<body>
+    <div class="navagation">
+        <ul>
+            <li><a href="home.html">主页</a></li>
+
+            <li><a href="./edit.html">关于我</a></li>
+        </ul>
+        <button id="logoutButton">退出登录</button>
+    </div>
+    <div class="container">
+        <h1>编辑个人信息</h1>
+        <form id="profileForm">
+            <label for="username">用户名:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="avatar">头像:</label>
+            <input type="file" id="avatar" name="avatar">
+
+            <button type="submit">保存更改</button>
+        </form>
+
+    </div>
+    <div class="img">
+        <img id="avatarPreview" src="" style="display: none;">
+    </div>
+
+    <script src="./js/edit.js"></script>
+</body>
+
+</html>

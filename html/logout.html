@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>退出登录</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            margin: 20px 0;
+            color: #666;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #007BFF;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>您已成功退出</h1>
+    <p>感谢您的使用，期待再次见到您！</p>
+    <a href="login.html">返回登录页面</a>
+
+    <script>
+        // 通过后端注销会话
+        async function logout() {
+            try {
+                const response = await fetch('/auth.php', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action: 'logout' }),
+                });
+
+                if (response.ok) {
+                    // 清除前端存储的用户信息
+                    sessionStorage.removeItem('user');
+                } else {
+                    console.error("退出失败");
+                }
+            } catch (error) {
+                console.error("网络错误：", error);
+            }
+        }
+
+        // 页面加载时自动执行注销操作
+        window.onload = logout;
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+/* 全局样式 */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('./img/one.jpg') no-repeat fixed;
+    background-size: cover;
+
+}
+
+/* 导航栏 */
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 70%;
+
+}
+
+.navigation li {
+    float: left;
+}
+
+.navigation li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+}
+
+.navigation li a:hover {
+    background: lightseagreen;
+    border-radius: 12px;
+    color: rgb(13, 84, 81);
+}
+
+a {
+    font-weight: bold;
+    color: lightseagreen;
+    background: none;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+
+/* 个人资料样式 */
+.profile {
+    text-align: center;
+    padding: 20px;
+}
+
+#img {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+#userAvatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#userName {
+    margin-top: 10px;
+    font-size: 1.5em;
+    color: aquamarine;
+}
+
+/* 发布新博客的样式 */
+#newPost {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+    background-blend-mode: multiply;
+}
+
+#postContent {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+/* 博客文章列表 */
+#posts {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+    background-blend-mode: multiply;
+}
+
+.post {
+    padding: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+/* 通用按钮样式 */
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background: linear-gradient(90deg, #4caf50, #45a049);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(90deg, #45a049, #4caf50);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+button:active {
+    background: linear-gradient(90deg, #3d8c43, #3e8e44);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transform: scale(1);
+}
+
+/* 发布文章按钮单独样式 */
+#postForm button {
+    width: 100%;
+    font-size: 18px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+}
+
+#postForm button:hover {
+    background: linear-gradient(90deg, #0056b3, #007bff);
+}
+
+#postList {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+    background-blend-mode: multiply;
+}
+
+/* 留言板容器 */
+#messages {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+    background-blend-mode: multiply;
+}
+
+/* 留言内容列表 */
+#messageList {
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* 每条留言 */
+.message {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    color: #333;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* 留言者用户名 */
+.message strong {
+    color: lightseagreen;
+    font-size: 1.1em;
+}
+
+/* 留言时间 */
+.message small {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* 发布留言表单 */
+#messageForm {
+    max-width: 600px;
+    /* 使表单宽度与文章宽度一致 */
+    margin: 20px auto;
+    /* 居中显示 */
+}
+
+/* 发布留言按钮 */
+#messageForm button {
+    width: 100%;
+    font-size: 18px;
+    margin-top: 10px;
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+/* 发布留言按钮 hover 效果 */
+#messageForm button:hover {
+    background: linear-gradient(90deg, #0056b3, #007bff);
+    transform: scale(1.05);
+}
+
+/* 发布留言按钮 active 效果 */
+#messageForm button:active {
+    background: linear-gradient(90deg, #3d8c43, #3e8e44);
+    transform: scale(1);
+}
+
+/* 留言内容输入框 */
+#messageContent {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+#newMessage {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    max-width: 600px;
+    background-blend-mode: multiply;
+}

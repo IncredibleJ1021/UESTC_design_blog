@@ -1,0 +1,155 @@
+* {
+
+    margin: 0;
+    padding: 0;
+}
+
+.page-one {
+    height: 740px;
+    margin: 0;
+    background-image: url(./img/one.jpg);
+    overflow: hidden;
+    /* ��ֹ������� */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+    /* ƽ�����Ч�� */
+}
+
+.page-two {
+    height: 150px;
+    background-color: #fff;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navagation {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: bold;
+    opacity: 20%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    font-weight: bold;
+    font-size: 20px;
+    opacity: 70%;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background: lightseagreen;
+    border-radius: 12px;
+}
+
+h1 {
+    letter-spacing: 8px;
+    text-align: center;
+    font-size: 50px;
+    color: #fff;
+    opacity: 85%;
+}
+
+.hero {
+    position: relative;
+    top: 100px;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    height: 50px;
+    color: #ffffff;
+}
+
+
+.about h2 {
+    text-align: center;
+    font-size: 50px;
+    bottom: 0;
+    color: #000000;
+}
+
+.about p {
+    text-align: center;
+}
+
+.auth-links {
+    top: 200px;
+    position: absolute;
+    left: 45%;
+    font-size: 30px;
+    letter-spacing: 8px;
+    border: #fff;
+}
+
+a:hover {
+    color: rgb(13, 84, 81);
+}
+
+a {
+    font-weight: bold;
+    color: lightseagreen;
+    background: none;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+/* Ϊ����ť��ӹ�����ʽ */
+#a a {
+    display: inline-block;
+    /* ʹ���ӱ��ֵ���鼶Ԫ�� */
+    padding: 10px 20px;
+    /* ���һЩ�ڱ߾� */
+    margin: 15px 0;
+    border: 3px solid rgba(0, 0, 0, 0.5);
+    /* ��Ӻ�ɫ��͸��߿� */
+    border-radius: 5px;
+    /* ���Բ�Ǳ߿� */
+    color: #fff;
+    /* ����������ɫΪ��ɫ */
+    background-color: 0;
+    /* ���ñ�����ɫΪ��ɫ */
+    text-decoration: none;
+    /* ȥ���»��� */
+    opacity: 0.8;
+    /* ����͸��� */
+    transition: all 0.3s ease;
+    /* ��ӹ��Ч�� */
+}
+
+/* Ϊ��ť��������ͣЧ�� */
+#a a:hover {
+    opacity: 1;
+    /* �����ͣʱ͸��ȱ�Ϊ��͸�� */
+    background-color: #333;
+    /* �����ͣʱ������ɫ��ǳ */
+}
