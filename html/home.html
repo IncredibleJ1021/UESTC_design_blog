@@ -45,7 +45,7 @@
         <script>
             async function fetchPosts() {
                 try {
-                    const response = await fetch('get_posts.php'); // 调用后端接口
+                    const response = await fetch('/get_posts.php'); // 调用后端接口
                     const data = await response.json();
 
                     if (data.error) {

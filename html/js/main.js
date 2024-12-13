@@ -98,7 +98,7 @@ document.getElementById('postForm').addEventListener('submit', async function(e)
         if (result.status === 'success') {
             // 弹窗提示
             alert(result.message);  
-            window.location.replace('/home.php'); // 跳转到首页
+            window.location.replace('/home.html'); // 跳转到首页
         } else {
             alert("发布失败：" + result.message);
         }
